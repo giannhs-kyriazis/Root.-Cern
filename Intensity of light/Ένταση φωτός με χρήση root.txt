@@ -1,0 +1,30 @@
+ {
+ 
+     TF1 *diagramma = new TF1("diagramma", "(pow( (sin(([0]*2*TMath::Pi()*[3]*sin(x))/[1])/(sin((2*TMath::Pi()*[3]*sin(x)/[1])))),2))*(pow( (sin((2*TMath::Pi()*[2]*sin(x))/[1])/(2*TMath::Pi()*[2]*sin(x)/[1])),2))", 0, 2*TMath::Pi());
+   
+  
+   int N=5;
+   double lamda=550*pow(10,-9);
+   double a=lamda;
+   double d=2.4*lamda;
+   Int_t npx=10000;
+
+   diagramma->SetParameter(0,N);
+    diagramma->SetParameter(1,lamda);
+     diagramma->SetParameter(2,a);
+      diagramma->SetParameter(3,d);
+      diagramma->SetTitle("IOANNIS KYRIAZIS 8283");
+   diagramma->SetNpx(10000);
+  
+   
+
+ TCanvas *canvas = new TCanvas("canvas", " Diagramma", 800, 600);
+ diagramma->Draw();
+ diagramma->GetXaxis()->SetTitle("sin(#theta)");
+ diagramma->GetYaxis()->SetTitle("Intensity [au]");
+ diagramma->SetFillColor(kBlue);
+ diagramma->SetLineColor(kBlue);
+ diagramma->SetLineWidth(2);
+ canvas->Draw();
+ }
+ 
